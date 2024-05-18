@@ -1,6 +1,6 @@
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
-const Cores = {
+export const cores = {
   salmaoEscuro: '#E66767',
   salmaoClaro: '#FFEBD9',
   branca: '#FFFFFF',
@@ -16,6 +16,11 @@ export const GlobalCss = createGlobalStyle`
   }
 
   body {
-    background-color: ${Cores.bege}
+    background-color: ${cores.bege}
   }
+`
+export const Container = styled.div`
+  max-width: 1024px;
+  width: 100%;
+  margin: 0 auto;
 `
