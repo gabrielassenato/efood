@@ -1,4 +1,6 @@
 import FoodsList from '../../components/FoodsList'
+import FoodsHeader from '../../components/FoodsHeader'
+import FoodsBanner from '../../components/FoodsBanner'
 import Foods from '../../models/Foods'
 
 import BistroDelMar from '../../assets/images/Bistro-delMar.jpg'
@@ -56,6 +58,8 @@ const listFoods: Foods[] = [
 
 const Pratos = () => (
   <>
+    <FoodsHeader />
+    <FoodsBanner />
     <Container>
       <FoodsList pratos={listFoods} />
     </Container>
