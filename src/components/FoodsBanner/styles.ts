@@ -26,7 +26,7 @@ export const Image = styled.div`
 
   * {
     position: relative;
-    z-index: 2;
+    z-index: 1;
   }
 `
 
