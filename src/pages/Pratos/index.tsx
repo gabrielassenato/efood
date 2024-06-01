@@ -1,3 +1,5 @@
+import { useParams } from 'react-router-dom'
+
 import FoodsList from '../../components/FoodsList'
 import FoodsHeader from '../../components/FoodsHeader'
 import FoodsBanner from '../../components/FoodsBanner'
@@ -56,14 +58,18 @@ const listFoods: Foods[] = [
   }
 ]
 
-const Pratos = () => (
-  <>
-    <FoodsHeader />
-    <FoodsBanner />
-    <Container>
-      <FoodsList pratos={listFoods} />
-    </Container>
-  </>
-)
+const Pratos = () => {
+  const { id } = useParams()
+
+  return (
+    <>
+      <FoodsHeader />
+      <FoodsBanner />
+      <Container>
+        <FoodsList pratos={listFoods} />
+      </Container>
+    </>
+  )
+}
 
 export default Pratos
