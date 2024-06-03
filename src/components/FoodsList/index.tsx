@@ -1,5 +1,5 @@
 import Platess from '../../models/Foods'
-import { Detalhes, Plates } from '../Foods'
+import { Plates } from '../Foods'
 import { Container, List } from './styles'
 export type Props = {
   pratos: Platess[]
@@ -11,12 +11,6 @@ const FoodList = ({ pratos }: Props) => (
       {pratos.map((plates) => (
         <>
           <Plates
-            key={plates.id}
-            image={plates.image}
-            title={plates.title}
-            description={plates.description}
-          />
-          <Detalhes
             key={plates.id}
             image={plates.image}
             title={plates.title}
