@@ -6,6 +6,7 @@ export const Card = styled.div`
   width: 100%;
   height: 398px;
   position: relative;
+  margin-bottom: 44px;
 `
 export const RestaurantImage = styled.img`
   width: 100%;
@@ -19,8 +20,8 @@ export const CardContainer = styled.div`
   background-color: ${cores.salmaoEscuro};
 
   div {
-    display: flex;
     margin-bottom: 16px;
+    display: flex;
     justify-content: space-between;
     font-weight: bold;
   }
@@ -37,7 +38,7 @@ export const Descricao = styled.p`
 export const Button = styled.button`
   text-decoration: none;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 16px;
   padding: 4px 6px;
   width: 100%;
   border: none;
@@ -67,7 +68,7 @@ export const Modal = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.7);
   }
 `
 

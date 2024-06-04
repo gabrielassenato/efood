@@ -16,10 +16,20 @@ type Props = {
   image: string
   title: string
   description: string
+  porcao: string
+  preco: number
 }
 
-export const Plates = ({ image, title, description }: Props) => {
+export const Plates = ({ image, title, description, porcao, preco }: Props) => {
   const [modalEstaAberto, setModalEstaAberto] = useState(false);
+
+  const getDescricao = (descricao: string) => {
+    if (descricao.length > 250) {
+      return descricao.slice(0, 247) + '...'
+    }
+    return descricao
+  }
+
 
   return (
     <>
@@ -29,7 +39,7 @@ export const Plates = ({ image, title, description }: Props) => {
           <div>
             <Titulo>{title}</Titulo>
           </div>
-          <Descricao>{description}</Descricao>
+          <Descricao>{getDescricao(description)}</Descricao>
           <Button className='botao' onClick={() => setModalEstaAberto(true)}>Mais detalhes</Button>
         </CardContainer>
       </Card>
@@ -40,11 +50,10 @@ export const Plates = ({ image, title, description }: Props) => {
             <img src={image} alt={title} />
             <div className='header'>
               <h4>{title}</h4>
-              <p className='descricao'>
-                A pizza Margherita é uma pizza clássica da culinária italiana, reconhecida por sua simplicidade e sabor inigualável. Ela é feita com uma base de massa fina e crocante, coberta com molho de tomate fresco, queijo mussarela de alta qualidade, manjericão fresco e azeite de oliva extra-virgem. A combinação de sabores é perfeita, com o molho de tomate suculento e ligeiramente ácido, o queijo derretido e cremoso e as folhas de manjericão frescas, que adicionam um toque de sabor herbáceo. É uma pizza simples, mas deliciosa, que agrada a todos os paladares e é uma ótima opção para qualquer ocasião. <br /><br /> Serve: de 2 a 3 pessoas
-              </p>
+              <p className='descricao'>{description}</p>
+              <p>Serve: de {porcao}</p>
               <Link to="/pratos">
-                <Button>Ver pratos</Button>
+                <Button>Adicionar ao carrinho - R$ {preco}</Button>
               </Link>
             </div>
           </ModalContent>

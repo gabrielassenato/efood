@@ -1,25 +1,28 @@
-import Platess from '../../models/Foods'
+import { Cardapio } from '../../pages/Pratos'
 import { Plates } from '../Foods'
 import { Container, List } from './styles'
+
 export type Props = {
-  pratos: Platess[]
+  pratos: Cardapio[]
 }
 
-const FoodList = ({ pratos }: Props) => (
-  <Container>
-    <List>
-      {pratos.map((plates) => (
-        <>
+export const FoodList = ({ pratos }: Props) => {
+  return (
+    <Container>
+      <List>
+        {pratos.map((plates) => (
           <Plates
             key={plates.id}
-            image={plates.image}
-            title={plates.title}
-            description={plates.description}
+            image={plates.foto}
+            title={plates.nome}
+            description={plates.descricao}
+            porcao={plates.porcao}
+            preco={plates.preco}
           />
-        </>
-      ))}
-    </List>
-  </Container>
-)
+        ))}
+      </List>
+    </Container>
+  )
+}
 
 export default FoodList

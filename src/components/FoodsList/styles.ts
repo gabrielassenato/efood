@@ -7,6 +7,7 @@ export const Container = styled.section`
 
 export const List = styled.ul`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-auto-rows: auto;
+  grid-gap: 32px;
 `

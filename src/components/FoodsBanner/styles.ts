@@ -10,6 +10,7 @@ export const Image = styled.div`
   display: block;
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   color: ${cores.branca};
 
   &::before {

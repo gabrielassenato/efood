@@ -1,16 +1,21 @@
 import { Image, Title, Description } from './styles'
-
 import { Container } from '../../styles'
 
-import bannerImg from '../../assets/images/image2.png'
+type Props = {
+  image: string
+  title: string
+  type: string
+}
 
-const FoodsBanner = () => (
-  <Image style={{ backgroundImage: `url(${bannerImg})` }}>
-    <Container>
-      <Description>Italiana</Description>
-      <Title>Italiana Bella Pizza</Title>
-    </Container>
-  </Image>
-)
+export const FoodsBanner = ({ image, title, type }: Props) => {
+  return (
+    <Image style={{ backgroundImage: `url(${image})` }}>
+      <Container>
+        <Description>{type}</Description>
+        <Title>{title}</Title>
+      </Container>
+    </Image>
+  )
+}
 
 export default FoodsBanner

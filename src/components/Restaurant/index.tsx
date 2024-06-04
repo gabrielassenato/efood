@@ -10,26 +10,36 @@ import estrela from '../../assets/images/estrela.png'
 import { Link } from 'react-router-dom'
 
 type Props = {
+  id: number
   image: string
   title: string
-  rate: string
+  rate: number
   description: string
 }
 
-export const Restaurant = ({ image, title, rate, description }: Props) => (
-  <Card>
-    <RestaurantImage src={image} alt={title} />
-    <CardContainer>
-      <div>
-        <Titulo>{title}</Titulo>
-        <span>
-          {rate} <img src={estrela} alt="classificação" />
-        </span>
-      </div>
-      <Descricao>{description}</Descricao>
-      <Link to="/pratos">
-        <Button>Saiba mais</Button>
-      </Link>
-    </CardContainer>
-  </Card>
-)
+export const Restaurant = ({ id, image, title, rate, description }: Props) => {
+  const getDescricao = (descricao: string) => {
+    if (descricao.length > 234) {
+      return descricao.slice(0, 215) + '...'
+    }
+    return descricao
+  }
+
+  return (
+    <Card>
+      <RestaurantImage src={image} alt={title} />
+      <CardContainer>
+        <div>
+          <Titulo>{title}</Titulo>
+          <span>
+            {rate} <img src={estrela} alt="classificação" />
+          </span>
+        </div>
+        <Descricao>{getDescricao(description)}</Descricao>
+        <Link to={`/pratos/${id}`}>
+          <Button>Saiba mais</Button>
+        </Link>
+      </CardContainer>
+    </Card>
+  )
+}
