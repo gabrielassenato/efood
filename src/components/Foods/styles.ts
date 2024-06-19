@@ -12,6 +12,7 @@ export const RestaurantImage = styled.img`
   width: 100%;
   height: 217px;
   display: block;
+  object-fit: cover;
 `
 export const CardContainer = styled.div`
   padding: 8px;

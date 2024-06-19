@@ -1,37 +1,19 @@
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom';
+import FoodsList from '../../components/FoodsList';
+import FoodsHeader from '../../components/FoodsHeader';
+import FoodsBanner from '../../components/FoodsBanner';
+import { Container } from '../../styles';
 
-import FoodsList from '../../components/FoodsList'
-import FoodsHeader from '../../components/FoodsHeader'
-import FoodsBanner from '../../components/FoodsBanner'
-import { Container } from '../../styles'
-
-export type Cardapio = {
-  id: number
-  foto: string
-  preco: number
-  nome: string
-  descricao: string
-  porcao: string
-}
+import { useGetRestaurantByIdQuery } from '../../services/api';
+import Cart from '../../components/Cart';
 
 const Pratos = () => {
-  const { id } = useParams<{ id: string }>()
-  const [cardapio, setCardapio] = useState<Cardapio[]>([])
-  const [restaurante, setRestaurante] = useState<any>(null) // Tipo any por simplicidade, pode ser especificado melhor
+  const { id } = useParams<{ id: string }>();
+  const { data: restaurante, isLoading } = useGetRestaurantByIdQuery(id!);
 
-  useEffect(() => {
-    if (id) {
-      fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setRestaurante(data)
-          setCardapio(data.cardapio)
-        })
-    }
-  }, [id])
-
-  if (!restaurante) return <p>Carregando...</p>
+  if (isLoading || !restaurante) {
+    return <p>Carregando...</p>;
+  }
 
   return (
     <>
@@ -42,10 +24,11 @@ const Pratos = () => {
         type={restaurante.tipo}
       />
       <Container>
-        <FoodsList pratos={cardapio} />
+        <FoodsList pratos={restaurante.cardapio} />
       </Container>
+      <Cart />
     </>
-  )
+  );
 }
 
-export default Pratos
+export default Pratos;

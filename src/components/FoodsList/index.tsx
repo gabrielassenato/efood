@@ -1,4 +1,4 @@
-import { Cardapio } from '../../pages/Pratos'
+import { Cardapio } from '../../services/api'
 import { Plates } from '../Foods'
 import { Container, List } from './styles'
 

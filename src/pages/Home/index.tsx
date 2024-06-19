@@ -3,24 +3,14 @@ import RestaurantList from '../../components/RestaurantList'
 import Header from '../../components/Header'
 import { Container } from '../../styles'
 
-export type Restaurants = {
-  id: number
-  titulo: string
-  destacado: boolean
-  tipo: string
-  avaliacao: number
-  descricao: string
-  capa: string
-}
+import { useGetFeaturedRestaurantQuery } from '../../services/api'
 
 const Home = () => {
-  const [listRestaurants, setListRestaurants] = useState<Restaurants[]>([])
+  const { data: listRestaurants, isLoading } = useGetFeaturedRestaurantQuery()
 
-  useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
-      .then(res => res.json())
-      .then(res => setListRestaurants(res))
-  }, [])
+  if (!listRestaurants) {
+    return <h3>Carregando...</h3>
+  }
 
   return (
     <>
