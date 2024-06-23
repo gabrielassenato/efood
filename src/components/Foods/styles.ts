@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
+import fechar from '../../assets/images/close.png'
 
 export const Card = styled.div`
   max-width: 472px;
@@ -71,6 +72,18 @@ export const Modal = styled.div`
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
   }
+`
+
+export const Fechar = styled.button`
+  background-image: url(${fechar});
+  background-color: transparent;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  border: none;
+  position: absolute;
+  top: 8px;
+  right: 8px;
 `
 
 export const ModalContent = styled.div`

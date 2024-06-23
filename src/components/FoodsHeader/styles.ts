@@ -36,9 +36,10 @@ export const Title = styled.h2`
   }
 `
 
-export const Carrinho = styled.h2`
+export const CartButton = styled.h2`
   font-size: 18px;
   font-weight: 900;
+  cursor: pointer;
   color: ${cores.salmaoEscuro};
 `
 export const Banner = styled.img`

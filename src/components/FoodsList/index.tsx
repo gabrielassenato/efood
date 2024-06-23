@@ -1,28 +1,30 @@
-import { Cardapio } from '../../services/api'
-import { Plates } from '../Foods'
-import { Container, List } from './styles'
+import React from 'react';
+import Plates from '../Foods'
+import { Cardapio } from '../../services/api'; // Certifique-se de importar o tipo correto
+import { Container, List } from './styles';
 
-export type Props = {
-  pratos: Cardapio[]
-}
+type Props = {
+  pratos: Cardapio[];
+};
 
-export const FoodList = ({ pratos }: Props) => {
+const FoodsList: React.FC<Props> = ({ pratos }) => {
   return (
     <Container>
       <List>
-        {pratos.map((plates) => (
+        {pratos.map((plate) => (
           <Plates
-            key={plates.id}
-            image={plates.foto}
-            title={plates.nome}
-            description={plates.descricao}
-            porcao={plates.porcao}
-            preco={plates.preco}
+            key={plate.id}
+            id={plate.id}
+            foto={plate.foto}
+            nome={plate.nome}
+            descricao={plate.descricao}
+            porcao={plate.porcao}
+            preco={plate.preco}
           />
         ))}
       </List>
     </Container>
-  )
-}
+  );
+};
 
-export default FoodList
+export default FoodsList;
