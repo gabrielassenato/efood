@@ -45,6 +45,25 @@ export const SideBar = styled.aside`
     }
 `
 
+export const CartDetails = styled.div`
+    display: block;
+    
+    &.is-closed {
+        display: none;
+    }
+
+    button {
+        background-color: ${cores.salmaoClaro};
+        border: none;
+        padding: 4px 0;
+        width: 100%;
+        cursor: pointer;
+        color: ${cores.salmaoEscuro};
+        font-size: 14px;
+        font-weight: bold;
+    }
+`
+
 export const Prices = styled.p`
     margin-top: 32px;
     display: flex;
@@ -102,3 +121,97 @@ export const CartItem = styled.li`
         right: 8px;
     }
 `
+
+export const Form = styled.form`
+    display: flex;
+`
+
+export const DeliveryDetails = styled.section`
+    display: none;
+    font-weight: bold;
+
+    &.is-visible {
+        display: block;
+    }
+
+    h2 {
+        font-size: 16px;
+        color: ${cores.salmaoClaro};
+        margin-bottom: 16px;
+    }
+
+`
+
+export const Row = styled.div`
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+`
+
+export const InputGroup = styled.div`
+    margin-top: 8px;
+    font-size: 14px;
+
+    label {
+        color: ${cores.salmaoClaro};
+    }
+    input {
+        display: flex;
+        width: 100%;
+        height: 32px;
+        border: none;
+        background-color: ${cores.salmaoClaro};
+        margin-top: 8px;
+        font-weight: bold;
+    }
+`
+
+export const ButtonsGroup = styled.div`
+    margin-top: 24px;
+
+    Button {
+        margin-bottom: 8px;
+    }
+`
+
+export const PaymentDetails = styled.section`
+    display: none;
+    font-weight: bold;
+
+    &.is-visible {
+        display: block;
+    }
+
+    h2 {
+        font-size: 16px;
+        color: ${cores.salmaoClaro};
+        margin-bottom: 16px;
+    }
+`
+
+export const OrderDetails = styled.section`
+    display: none;
+
+    &.is-visible {
+        display: block;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 16px;
+        color: ${cores.salmaoClaro};
+        margin-bottom: 16px;
+    }
+
+    p {
+        font-size: 14px;
+        font-weight: light;
+        color: ${cores.salmaoClaro};
+    }
+    
+    button {
+        margin-top: 24px;
+    }
+`
+
+
