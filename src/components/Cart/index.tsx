@@ -1,16 +1,17 @@
-import { useState } from "react"
-import { useFormik } from "formik"
-import { useDispatch, useSelector } from "react-redux"
+import { useState } from 'react'
+import { useFormik } from 'formik'
+import { useDispatch, useSelector } from 'react-redux'
 import * as Yup from 'yup'
+import InputMask from 'react-input-mask'
 
-import { Button } from "../Foods/styles"
+import { Button } from '../Foods/styles'
 
-import { RootReducer } from "../../store"
+import { RootReducer } from '../../store'
 import { clear, close, remove } from '../../store/reducers/cart'
-import { parseToBrl } from "../../utils"
-import { usePurchaseMutation } from "../../services/api"
+import { parseToBrl } from '../../utils'
+import { usePurchaseMutation } from '../../services/api'
 
-import * as S from "./styles"
+import * as S from './styles'
 
 const Cart = () => {
     const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
@@ -77,8 +78,8 @@ const Cart = () => {
                 .min(5, 'O nome precisa ter pelo menos 5 caracteres')
                 .required('O campo é obrigatório'),
             cardNumber: Yup.string()
-                .min(16, 'O número do cartão precisa ter 16 caracteres')
-                .max(16, 'O número do cartão precisa ter 16 caracteres')
+                .min(19, 'O número do cartão precisa ter 16 caracteres')
+                .max(19, 'O número do cartão precisa ter 16 caracteres')
                 .required('O campo é obrigatório'),
             cardCode: Yup.string()
                 .min(3, 'O CVV precisa ter 3 caracteres')
@@ -125,15 +126,7 @@ const Cart = () => {
             })
         }
     })
-
-    const getErrorMessage = (fieldName: string, message?: string) => {
-        const isTouched = fieldName in form.touched
-        const isInvalid = fieldName in form.errors
-
-        if (isTouched && isInvalid) return message
-        return ''
-    }
-
+    
     const checkInputHasError = (fieldName: string) => {
         const isTouched = fieldName in form.touched
         const isInvalid = fieldName in form.errors
@@ -232,9 +225,11 @@ const Cart = () => {
                             <S.Row>
                                 <S.InputGroup>
                                     <label htmlFor="cep">CEP</label>
-                                    <input type="text" id="cep" name="cep" value={form.values.cep} onChange={form.handleChange}
-                                    className={checkInputHasError('cep') ? 'error' : ''}
-                                    onBlur={form.handleBlur} />
+                                        <InputMask type="text" id="cep" name="cep" value={form.values.cep} onChange={form.handleChange}
+                                        className={checkInputHasError('cep') ? 'error' : ''}
+                                        onBlur={form.handleBlur}
+                                        mask="99999-999" 
+                                    />
                                 </S.InputGroup>
                                 <S.InputGroup>
                                     <label htmlFor="number">Número</label>
@@ -280,29 +275,37 @@ const Cart = () => {
                             <S.Row>
                                 <S.InputGroup>
                                     <label htmlFor="cardNumber">Número do cartão</label>
-                                    <input type="text" id="cardNumber" name="cardNumber" value={form.values.cardNumber} onChange={form.handleChange}
+                                    <InputMask type="text" id="cardNumber" name="cardNumber" value={form.values.cardNumber} onChange={form.handleChange}
                                     className={checkInputHasError('cardNumber') ? 'error' : ''}
-                                    onBlur={form.handleBlur} />
+                                    onBlur={form.handleBlur} 
+                                    mask="9999 9999 9999 9999"
+                                    />
                                 </S.InputGroup>
                                 <S.InputGroup>
                                     <label htmlFor="cardCode">CVV</label>
-                                    <input type="text" id="cardCode" name="cardCode" value={form.values.cardCode} onChange={form.handleChange}
+                                    <InputMask type="text" id="cardCode" name="cardCode" value={form.values.cardCode} onChange={form.handleChange}
                                     className={checkInputHasError('cardCode') ? 'error' : ''}
-                                    onBlur={form.handleBlur} />
+                                    onBlur={form.handleBlur} 
+                                    mask="999"
+                                    />
                                 </S.InputGroup>
                             </S.Row>
                             <S.Row>
                                 <S.InputGroup>
                                     <label htmlFor="expiresMonth">Mês de vencimento</label>
-                                    <input type="text" id="expiresMonth" name="expiresMonth" value={form.values.expiresMonth} onChange={form.handleChange}
+                                    <InputMask type="text" id="expiresMonth" name="expiresMonth" value={form.values.expiresMonth} onChange={form.handleChange}
                                     className={checkInputHasError('expiresMonth') ? 'error' : ''}
-                                    onBlur={form.handleBlur} />
+                                    onBlur={form.handleBlur}
+                                    mask="99"
+                                    />
                                 </S.InputGroup>
                                 <S.InputGroup>
                                     <label htmlFor="expiresYear">Ano de vencimento</label>
-                                    <input type="text" id="expiresYear" name="expiresYear" value={form.values.expiresYear} onChange={form.handleChange}
+                                    <InputMask type="text" id="expiresYear" name="expiresYear" value={form.values.expiresYear} onChange={form.handleChange}
                                     className={checkInputHasError('expiresYear') ? 'error' : ''}
-                                    onBlur={form.handleBlur} />
+                                    onBlur={form.handleBlur} 
+                                    mask="9999"
+                                    />
                                 </S.InputGroup>
                             </S.Row>
                             <S.ButtonsGroup>
