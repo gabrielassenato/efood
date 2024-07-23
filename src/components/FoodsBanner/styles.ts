@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { cores } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const Image = styled.div`
   position: relative;
@@ -11,7 +11,7 @@ export const Image = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  color: ${cores.branca};
+  color: ${colors.white};
 
   &::before {
     content: '';
@@ -34,10 +34,18 @@ export const Image = styled.div`
 export const Description = styled.h2`
   font-size: 32px;
   font-weight: 100;
+
+  @media (max-width: ${breakpoints.cellphone}) {
+    font-size: 24px;
+  }
 `
 
 export const Title = styled.h2`
   font-size: 32px;
   font-weight: bold;
   padding-top: 156px;
+
+  @media (max-width: ${breakpoints.cellphone}) {
+    font-size: 24px;
+  }
 `

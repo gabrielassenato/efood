@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 import fechar from '../../assets/images/close.png'
 
 export const Card = styled.div`
@@ -18,8 +18,8 @@ export const RestaurantImage = styled.img`
 export const CardContainer = styled.div`
   padding: 8px;
   border-top: none;
-  color: ${cores.salmaoClaro};
-  background-color: ${cores.salmaoEscuro};
+  color: ${colors.lightOrange};
+  background-color: ${colors.orange};
 
   div {
     margin-bottom: 16px;
@@ -29,11 +29,11 @@ export const CardContainer = styled.div`
   }
 `
 
-export const Titulo = styled.h3`
+export const Title = styled.h3`
   font-size: 18px;
 `
 
-export const Descricao = styled.p`
+export const Description = styled.p`
   margin-bottom: 16px;
 `
 
@@ -44,8 +44,8 @@ export const Button = styled.button`
   padding: 4px 6px;
   width: 100%;
   border: none;
-  color: ${cores.salmaoEscuro};
-  background-color: ${cores.salmaoClaro};
+  color: ${colors.orange};
+  background-color: ${colors.lightOrange};
   cursor: pointer;
 `
 
@@ -74,7 +74,7 @@ export const Modal = styled.div`
   }
 `
 
-export const Fechar = styled.button`
+export const Close = styled.button`
   background-image: url(${fechar});
   background-color: transparent;
   cursor: pointer;
@@ -88,12 +88,12 @@ export const Fechar = styled.button`
 
 export const ModalContent = styled.div`
   max-width: 1024px;
-  background-color: ${cores.salmaoEscuro};
+  background-color: ${colors.orange};
   display: flex;
   padding: 32px;
   position: relative;
   z-index: 1;
-  color: ${cores.salmaoClaro};
+  color: ${colors.lightOrange};
   
 
   header {

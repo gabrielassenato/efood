@@ -1,13 +1,8 @@
-import {
-  Card,
-  RestaurantImage,
-  CardContainer,
-  Button,
-  Titulo,
-  Descricao
-} from './styles'
-import estrela from '../../assets/images/estrela.png'
 import { Link } from 'react-router-dom'
+
+import estrela from '../../assets/images/estrela.png'
+
+import * as S from './styles'
 
 type Props = {
   id: number
@@ -26,20 +21,20 @@ export const Restaurant = ({ id, image, title, rate, description }: Props) => {
   }
 
   return (
-    <Card>
-      <RestaurantImage src={image} alt={title} />
-      <CardContainer>
+    <S.Card>
+      <S.RestaurantImage src={image} alt={title} />
+      <S.CardContainer>
         <div>
-          <Titulo>{title}</Titulo>
+          <S.Title>{title}</S.Title>
           <span>
             {rate} <img src={estrela} alt="classificação" />
           </span>
         </div>
-        <Descricao>{getDescricao(description)}</Descricao>
+        <S.Description>{getDescricao(description)}</S.Description>
         <Link to={`/pratos/${id}`}>
-          <Button>Saiba mais</Button>
+          <S.Button>Saiba mais</S.Button>
         </Link>
-      </CardContainer>
-    </Card>
+      </S.CardContainer>
+    </S.Card>
   )
 }

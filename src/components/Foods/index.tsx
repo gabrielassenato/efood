@@ -1,27 +1,13 @@
-import {
-  Card,
-  RestaurantImage,
-  CardContainer,
-  Button,
-  Titulo,
-  Descricao,
-  Modal,
-  Fechar,
-  ModalContent,
-} from './styles';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+
 import { add, open } from '../../store/reducers/cart';
 import { Cardapio } from '../../services/api'
+import { parseToBrl } from '../../utils';
+
+import * as S from './styles';
 
 type Props = Cardapio;
-
-export const formataPreco = (preco = 0) => {
-  return new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL'
-  }).format(preco)
-}
 
 export const Plates = ({ id, foto, nome, descricao, porcao, preco }: Props) => {
   const [modalEstaAberto, setModalEstaAberto] = useState(false);
@@ -38,38 +24,38 @@ export const Plates = ({ id, foto, nome, descricao, porcao, preco }: Props) => {
   const addToCart = () => {
     dispatch(add({ id, foto, nome, descricao, porcao, preco }));
     dispatch(open());
-    
+    setModalEstaAberto(false);
   };
 
   return (
     <>
-      <Card>
-        <CardContainer>
-          <RestaurantImage src={foto} alt={nome} />
+      <S.Card>
+        <S.CardContainer>
+          <S.RestaurantImage src={foto} alt={nome} />
           <div>
-            <Titulo>{nome}</Titulo>
+            <S.Title>{nome}</S.Title>
           </div>
-          <Descricao>{getDescricao(descricao)}</Descricao>
-          <Button className='botao' onClick={() => setModalEstaAberto(true)}>
+          <S.Description>{getDescricao(descricao)}</S.Description>
+          <S.Button className='botao' onClick={() => setModalEstaAberto(true)}>
             Mais detalhes
-          </Button>
-        </CardContainer>
-      </Card>
+          </S.Button>
+        </S.CardContainer>
+      </S.Card>
 
       {modalEstaAberto && (
-        <Modal className='visivel'>
-          <ModalContent className='container'>
-            <Fechar onClick={() => setModalEstaAberto(false)} type="button" />
+        <S.Modal className='visivel'>
+          <S.ModalContent className='container'>
+            <S.Close onClick={() => setModalEstaAberto(false)} type="button" />
             <img src={foto} alt={nome} />
             <div className='header'>
               <h4>{nome}</h4>
               <p className='descricao'>{descricao}</p>
               <p>Serve: de {porcao}</p>
-              <Button onClick={addToCart}>Adicionar ao carrinho - R$ {formataPreco(preco)}</Button>
+              <S.Button onClick={addToCart}>Adicionar ao carrinho - R$ {parseToBrl(preco)}</S.Button>
             </div>
-          </ModalContent>
+          </S.ModalContent>
           <div className='overlay' onClick={() => setModalEstaAberto(false)}></div>
-        </Modal>
+        </S.Modal>
       )}
     </>
   );

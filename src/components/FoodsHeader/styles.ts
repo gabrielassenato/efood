@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 import background from '../../assets/images/background.png'
 
 export const HeaderBar = styled.header`
@@ -10,6 +10,10 @@ export const HeaderBar = styled.header`
   padding: 40px;
   display: flex;
   align-items: center;
+
+  a {
+    text-decoration: none;
+  }
 `
 
 export const Container = styled.div`
@@ -19,6 +23,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
 `
 
 export const Logo = styled.img`
@@ -29,10 +34,11 @@ export const Logo = styled.img`
 export const Title = styled.h2`
   font-size: 18px;
   font-weight: 900;
-  color: ${cores.salmaoEscuro};
+  text-decoration: none;
+  color: ${colors.orange};
 
-  @media (max-width: 615px) {
-    font-size: 24px;
+  @media (max-width: ${breakpoints.cellphone}) {
+    font-size: 16px;
   }
 `
 
@@ -40,7 +46,13 @@ export const CartButton = styled.h2`
   font-size: 18px;
   font-weight: 900;
   cursor: pointer;
-  color: ${cores.salmaoEscuro};
+  color: ${colors.orange};
+
+  @media (max-width: ${breakpoints.cellphone}) {
+    span {
+      display: none;
+    }
+  }
 `
 export const Banner = styled.img`
   height: 280px;

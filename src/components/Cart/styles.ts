@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { cores } from "../../styles"
+import { colors } from "../../styles"
 import fechar from '../../assets/images/excluir.png'
 
 export const Overlay = styled.div`
@@ -28,7 +28,7 @@ export const CartContainer = styled.div`
 `
 
 export const SideBar = styled.aside`
-    background-color: ${cores.salmaoEscuro};
+    background-color: ${colors.orange};
     z-index: 1;
     padding: 40px 16px 0 16px;
     max-width: 360px;
@@ -39,9 +39,16 @@ export const SideBar = styled.aside`
     }
 
     button {
-        background-color: ${cores.salmaoClaro};
-        color: ${cores.salmaoEscuro};
+        background-color: ${colors.lightOrange};
+        color: ${colors.orange};
         font-size: 14px;
+    }
+
+    .empty-text {
+    font-size: 14px;
+    line-height: 22px;
+    color: ${colors.lightOrange};
+    text-align: center;
     }
 `
 
@@ -53,12 +60,12 @@ export const CartDetails = styled.div`
     }
 
     button {
-        background-color: ${cores.salmaoClaro};
+        background-color: ${colors.lightOrange};
         border: none;
         padding: 4px 0;
         width: 100%;
         cursor: pointer;
-        color: ${cores.salmaoEscuro};
+        color: ${colors.orange};
         font-size: 14px;
         font-weight: bold;
     }
@@ -69,7 +76,7 @@ export const Prices = styled.p`
     display: flex;
     justify-content: space-between;
     margin-bottom: 16px;
-    color: ${cores.salmaoClaro};
+    color: ${colors.lightOrange};
 
     h3 {
         font-size: 14px;
@@ -85,7 +92,7 @@ export const Prices = styled.p`
 export const CartItem = styled.li`
     position: relative;
     display: flex;
-    background-color: ${cores.salmaoClaro};
+    background-color: ${colors.lightOrange};
     padding: 8px;
     margin-bottom: 16px;
 
@@ -100,13 +107,13 @@ export const CartItem = styled.li`
         font-weight: bold;
         margin-left: 8px;
         margin-bottom: 16px;
-        color: ${cores.salmaoEscuro};
+        color: ${colors.orange};
     }
 
     span {
         font-size: 14px;
         margin-left: 8px;
-        color: ${cores.salmaoEscuro};
+        color: ${colors.orange};
     }
 
     button {
@@ -136,7 +143,7 @@ export const DeliveryDetails = styled.section`
 
     h2 {
         font-size: 16px;
-        color: ${cores.salmaoClaro};
+        color: ${colors.lightOrange};
         margin-bottom: 16px;
     }
 
@@ -153,16 +160,20 @@ export const InputGroup = styled.div`
     font-size: 14px;
 
     label {
-        color: ${cores.salmaoClaro};
+        color: ${colors.lightOrange};
     }
     input {
         display: flex;
         width: 100%;
         height: 32px;
         border: none;
-        background-color: ${cores.salmaoClaro};
+        background-color: ${colors.lightOrange};
         margin-top: 8px;
         font-weight: bold;
+
+        &.error {
+            border: 3px solid red;
+        }
     }
 `
 
@@ -184,7 +195,7 @@ export const PaymentDetails = styled.section`
 
     h2 {
         font-size: 16px;
-        color: ${cores.salmaoClaro};
+        color: ${colors.lightOrange};
         margin-bottom: 16px;
     }
 `
@@ -199,14 +210,14 @@ export const OrderDetails = styled.section`
     h2 {
         font-weight: bold;
         font-size: 16px;
-        color: ${cores.salmaoClaro};
+        color: ${colors.lightOrange};
         margin-bottom: 16px;
     }
 
     p {
         font-size: 14px;
         font-weight: light;
-        color: ${cores.salmaoClaro};
+        color: ${colors.lightOrange};
     }
     
     button {

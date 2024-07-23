@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
+
 import RestaurantList from '../../components/RestaurantList'
 import Header from '../../components/Header'
+
 import { Container } from '../../styles'
 
 import { useGetFeaturedRestaurantQuery } from '../../services/api'

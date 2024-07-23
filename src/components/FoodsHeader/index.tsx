@@ -1,10 +1,12 @@
-import { HeaderBar, Logo, Title, CartButton, Container } from './styles'
+import { useDispatch, useSelector } from 'react-redux'
 
 import logo from '../../assets/images/logo.png'
 
 import { open } from '../../store/reducers/cart'
-import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
+
+import * as S from './styles'
+import { Link } from 'react-router-dom'
 
 const FoodsHeader = () => {
   const dispatch = useDispatch()
@@ -15,13 +17,15 @@ const FoodsHeader = () => {
   }
 
   return (
-    <HeaderBar>
-      <Container>
-        <Title>Restaurantes</Title>
-        <Logo src={logo} alt="efood" />
-        <CartButton onClick={openCart}>{items.length} produto(s) no carrinho</CartButton>
-      </Container>
-    </HeaderBar>
+    <S.HeaderBar>
+      <S.Container>
+        <Link to="/">
+          <S.Title>Restaurantes</S.Title>
+        </Link>
+        <S.Logo src={logo} alt="efood" />
+        <S.CartButton onClick={openCart}>{items.length}<span> produto(s) no carrinho</span></S.CartButton>
+      </S.Container>
+    </S.HeaderBar>
   )
 }
 

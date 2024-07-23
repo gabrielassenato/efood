@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 import background from '../../assets/images/background.png'
 
 export const HeaderBar = styled.header`
@@ -23,12 +23,9 @@ export const Title = styled.h2`
   font-size: 36px;
   font-weight: 900;
   line-height: 42px;
-  color: ${cores.salmaoEscuro};
+  color: ${colors.orange};
   max-width: 539px;
   width: 100%;
   text-align: center;
-
-  @media (max-width: 615px) {
-    font-size: 24px;
-  }
 `
+

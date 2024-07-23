@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const FooterBar = styled.header`
   padding: 40px;
@@ -7,7 +7,7 @@ export const FooterBar = styled.header`
   padding-bottom: 32px;
   flex-direction: column;
   align-items: center;
-  background-color: ${cores.salmaoClaro};
+  background-color: ${colors.lightOrange};
 `
 
 export const Logo = styled.img`
@@ -27,12 +27,12 @@ export const Socials = styled.span`
 
 export const Title = styled.h2`
   font-size: 12px;
-  color: ${cores.salmaoEscuro};
+  color: ${colors.orange};
   max-width: 539px;
   text-align: center;
   margin-bottom: 40px;
 
-  @media (max-width: 615px) {
-    font-size: 24px;
+  @media (max-width: ${breakpoints.cellphone}) {
+    font-size: 16px;
   }
 `

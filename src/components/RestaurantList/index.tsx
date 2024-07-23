@@ -1,5 +1,7 @@
 import { Restaurant } from '../Restaurant'
+
 import { Restaurants } from '../../services/api'
+
 import { Container, List } from './styles'
 
 export type Props = {

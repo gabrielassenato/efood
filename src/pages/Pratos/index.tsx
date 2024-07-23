@@ -1,11 +1,13 @@
 import { useParams } from 'react-router-dom';
+
 import FoodsList from '../../components/FoodsList';
 import FoodsHeader from '../../components/FoodsHeader';
 import FoodsBanner from '../../components/FoodsBanner';
-import { Container } from '../../styles';
+import Cart from '../../components/Cart';
 
 import { useGetRestaurantByIdQuery } from '../../services/api';
-import Cart from '../../components/Cart';
+
+import { Container } from '../../styles';
 
 const Pratos = () => {
   const { id } = useParams<{ id: string }>();

@@ -1,11 +1,14 @@
-import React from 'react';
+import React from 'react'
+
 import Plates from '../Foods'
-import { Cardapio } from '../../services/api'; // Certifique-se de importar o tipo correto
-import { Container, List } from './styles';
+
+import { Cardapio } from '../../services/api'
+
+import { Container, List } from './styles'
 
 type Props = {
-  pratos: Cardapio[];
-};
+  pratos: Cardapio[]
+}
 
 const FoodsList: React.FC<Props> = ({ pratos }) => {
   return (
@@ -24,7 +27,7 @@ const FoodsList: React.FC<Props> = ({ pratos }) => {
         ))}
       </List>
     </Container>
-  );
-};
+  )
+}
 
-export default FoodsList;
+export default FoodsList

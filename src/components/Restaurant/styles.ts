@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 
 export const Card = styled.div`
   max-width: 472px;
@@ -14,9 +14,9 @@ export const RestaurantImage = styled.img`
 `
 export const CardContainer = styled.div`
   padding: 8px;
-  border: solid 1px ${cores.salmaoEscuro};
+  border: solid 1px ${colors.orange};
   border-top: none;
-  color: ${cores.salmaoEscuro};
+  color: ${colors.orange};
 
   div {
     display: flex;
@@ -26,11 +26,11 @@ export const CardContainer = styled.div`
   }
 `
 
-export const Titulo = styled.h3`
+export const Title = styled.h3`
   font-size: 18px;
 `
 
-export const Descricao = styled.p`
+export const Description = styled.p`
   margin-bottom: 16px;
 `
 
@@ -40,7 +40,7 @@ export const Button = styled.button`
   font-size: 14px;
   padding: 4px 6px;
   border: none;
-  color: ${cores.branca};
-  background-color: ${cores.salmaoEscuro};
+  color: ${colors.white};
+  background-color: ${colors.orange};
   cursor: pointer;
 `
