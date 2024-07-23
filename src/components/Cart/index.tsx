@@ -1,48 +1,48 @@
-import { useState } from "react";
-import { useFormik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
-import * as Yup from 'yup';
+import { useState } from "react"
+import { useFormik } from "formik"
+import { useDispatch, useSelector } from "react-redux"
+import * as Yup from 'yup'
 
-import { Button } from "../Foods/styles";
+import { Button } from "../Foods/styles"
 
-import { RootReducer } from "../../store";
-import { clear, close, remove } from '../../store/reducers/cart';
-import { parseToBrl } from "../../utils";
-import { usePurchaseMutation } from "../../services/api";
+import { RootReducer } from "../../store"
+import { clear, close, remove } from '../../store/reducers/cart'
+import { parseToBrl } from "../../utils"
+import { usePurchaseMutation } from "../../services/api"
 
-import * as S from "./styles";
+import * as S from "./styles"
 
 const Cart = () => {
-    const { isOpen, items } = useSelector((state: RootReducer) => state.cart);
+    const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
     
-    const [deliveryDetails, setDeliveryDetails] = useState(false);
-    const [cartDetails, setCartDetails] = useState(false);
-    const [paymentsDetails, setPaymentsDetails] = useState(false);
-    const [orderDetails, setOrderDetails] = useState(false);
+    const [deliveryDetails, setDeliveryDetails] = useState(false)
+    const [cartDetails, setCartDetails] = useState(false)
+    const [paymentsDetails, setPaymentsDetails] = useState(false)
+    const [orderDetails, setOrderDetails] = useState(false)
     const [purchase, { isLoading, isError, isSuccess, data }] = usePurchaseMutation()
 
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
 
     const closeCart = () => {
-        dispatch(close());
-    };
+        dispatch(close())
+    }
 
     const getTotalPrice = () => {
         return items.reduce((acumulador, valorAtual) => {
-            return (acumulador += valorAtual.preco!);
-        }, 0);
-    };
+            return (acumulador += valorAtual.preco!)
+        }, 0)
+    }
 
     const removeItem = (id: number) => {
-        dispatch(remove(id));
-    };
+        dispatch(remove(id))
+    }
 
     const clearCart = () => {
-        dispatch(clear());
-        dispatch(close());
-        setOrderDetails(false);
-        setCartDetails(false);
-    };
+        dispatch(clear())
+        dispatch(close())
+        setOrderDetails(false)
+        setCartDetails(false)
+    }
 
     const form = useFormik({
         initialValues: {
@@ -168,8 +168,8 @@ const Cart = () => {
                     </S.Prices>
                     <Button type="button"
                     onClick={() => {
-                    setDeliveryDetails(true);
-                    setCartDetails(true);
+                    setDeliveryDetails(true)
+                    setCartDetails(true)
                     }}>
                         Continuar com a entrega
                     </Button>
@@ -207,7 +207,7 @@ const Cart = () => {
                     </Button>
                     </S.OrderDetails>
                 ) : (
-                    <form onSubmit={(e) => { e.preventDefault(); form.handleSubmit(e); }}>
+                    <form onSubmit={(e) => { e.preventDefault(); form.handleSubmit(e) }}>
                     <S.Form>
                         <S.DeliveryDetails className={deliveryDetails ? 'is-visible' : ''}>
                             <h2>Entrega</h2>
@@ -252,16 +252,16 @@ const Cart = () => {
                             <S.ButtonsGroup>
                                 <Button type="button"
                                 onClick={() => {
-                                setDeliveryDetails(false);
-                                setCartDetails(true);
-                                setPaymentsDetails(true);
+                                setDeliveryDetails(false)
+                                setCartDetails(true)
+                                setPaymentsDetails(true)
                             }}>
                                 Continuar com o pagamento
                                 </Button>
                                 <Button type="button"
                                 onClick={() => {
-                                setDeliveryDetails(false);
-                                setCartDetails(false);
+                                setDeliveryDetails(false)
+                                setCartDetails(false)
                             }}>
                                 Voltar ao carrinho
                                 </Button>
@@ -308,17 +308,17 @@ const Cart = () => {
                             <S.ButtonsGroup>
                                 <Button type="button"
                                 onClick={() => {
-                                form.handleSubmit();
-                                setOrderDetails(true);
-                                setPaymentsDetails(false);
+                                form.handleSubmit()
+                                setOrderDetails(true)
+                                setPaymentsDetails(false)
                             }}>
                                 Finalizar pagamento
                                 </Button>
                                 <Button type="button"
                                 onClick={() => {
-                                setDeliveryDetails(true);
-                                setCartDetails(true);
-                                setPaymentsDetails(false);
+                                setDeliveryDetails(true)
+                                setCartDetails(true)
+                                setPaymentsDetails(false)
                             }}>
                                 Voltar para edição de endereço
                                 </Button>
@@ -329,7 +329,7 @@ const Cart = () => {
                 )}
             </S.SideBar>
         </S.CartContainer>
-    );
-};
+    )
+}
 
-export default Cart;
+export default Cart

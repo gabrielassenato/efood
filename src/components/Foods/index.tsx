@@ -1,31 +1,31 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 
-import { add, open } from '../../store/reducers/cart';
+import { add, open } from '../../store/reducers/cart'
 import { Cardapio } from '../../services/api'
-import { parseToBrl } from '../../utils';
+import { parseToBrl } from '../../utils'
 
-import * as S from './styles';
+import * as S from './styles'
 
-type Props = Cardapio;
+type Props = Cardapio
 
 export const Plates = ({ id, foto, nome, descricao, porcao, preco }: Props) => {
-  const [modalEstaAberto, setModalEstaAberto] = useState(false);
+  const [modalEstaAberto, setModalEstaAberto] = useState(false)
 
   const getDescricao = (descricao: string) => {
     if (descricao.length > 250) {
-      return descricao.slice(0, 247) + '...';
+      return descricao.slice(0, 247) + '...'
     }
-    return descricao;
-  };
+    return descricao
+  }
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const addToCart = () => {
-    dispatch(add({ id, foto, nome, descricao, porcao, preco }));
-    dispatch(open());
-    setModalEstaAberto(false);
-  };
+    dispatch(add({ id, foto, nome, descricao, porcao, preco }))
+    dispatch(open())
+    setModalEstaAberto(false)
+  }
 
   return (
     <>
@@ -58,7 +58,7 @@ export const Plates = ({ id, foto, nome, descricao, porcao, preco }: Props) => {
         </S.Modal>
       )}
     </>
-  );
-};
+  )
+}
 
-export default Plates;
+export default Plates

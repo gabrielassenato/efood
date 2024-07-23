@@ -72,6 +72,6 @@ const api = createApi({
   })
 });
 
-export const { useGetFeaturedRestaurantQuery, useGetRestaurantByIdQuery, usePurchaseMutation } = api;
+export const { useGetFeaturedRestaurantQuery, useGetRestaurantByIdQuery, usePurchaseMutation } = api
 
 export default api;
