@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useFormik } from 'formik'
 import { useDispatch, useSelector } from 'react-redux'
 import * as Yup from 'yup'
@@ -20,7 +20,7 @@ const Cart = () => {
     const [cartDetails, setCartDetails] = useState(false)
     const [paymentsDetails, setPaymentsDetails] = useState(false)
     const [orderDetails, setOrderDetails] = useState(false)
-    const [purchase, { isLoading, isError, isSuccess, data }] = usePurchaseMutation()
+    const [purchase, { isSuccess, data }] = usePurchaseMutation()
 
     const dispatch = useDispatch()
 
@@ -36,13 +36,6 @@ const Cart = () => {
 
     const removeItem = (id: number) => {
         dispatch(remove(id))
-    }
-
-    const clearCart = () => {
-        dispatch(clear())
-        dispatch(close())
-        setOrderDetails(false)
-        setCartDetails(false)
     }
 
     const form = useFormik({
@@ -133,6 +126,46 @@ const Cart = () => {
         const hasError = isTouched && isInvalid
 
         return hasError
+    }
+    
+    const clearCart = () => {
+        dispatch(clear())
+        dispatch(close())
+        resetFormStates()
+        form.resetForm()
+    }
+
+    const resetFormStates = () => {
+        setOrderDetails(false)
+        setCartDetails(false)
+        setDeliveryDetails(false)
+        setPaymentsDetails(false)
+    }
+
+    const handleContinueToPayment = () => {
+        const { fullName, adress, city, cep, number } = form.values
+        const isDeliveryValid = fullName && adress && city && cep && number
+    
+        if (isDeliveryValid) {
+            setDeliveryDetails(false)
+            setCartDetails(true)
+            setPaymentsDetails(true)
+        } else {
+            alert('Por favor, preencha todos os campos obrigatórios de entrega.')
+        }
+    }
+
+    const handleFinishPayment = () => {
+        const { cardDisplayName, cardNumber, cardCode, expiresMonth, expiresYear } = form.values
+        const isPaymentValid = cardDisplayName && cardNumber && cardCode && expiresMonth && expiresYear
+    
+        if (isPaymentValid) {
+            form.handleSubmit()
+            setPaymentsDetails(false)
+            setOrderDetails(true)
+        } else {
+            alert('Por favor, preencha todos os campos obrigatórios de pagamento.')
+        }
     }
 
     return (
@@ -246,11 +279,7 @@ const Cart = () => {
                             </S.InputGroup>
                             <S.ButtonsGroup>
                                 <Button type="button"
-                                onClick={() => {
-                                setDeliveryDetails(false)
-                                setCartDetails(true)
-                                setPaymentsDetails(true)
-                            }}>
+                                onClick={handleContinueToPayment}>
                                 Continuar com o pagamento
                                 </Button>
                                 <Button type="button"
@@ -309,12 +338,8 @@ const Cart = () => {
                                 </S.InputGroup>
                             </S.Row>
                             <S.ButtonsGroup>
-                                <Button type="button"
-                                onClick={() => {
-                                form.handleSubmit()
-                                setOrderDetails(true)
-                                setPaymentsDetails(false)
-                            }}>
+                            <Button type="button"
+                                onClick={handleFinishPayment}>
                                 Finalizar pagamento
                                 </Button>
                                 <Button type="button"
